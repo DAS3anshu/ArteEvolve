@@ -6,7 +6,6 @@ const ExhibitionRouter = require("./routers/ExhibitionRouter");
 const utilRouter = require("./routers/util");
 const cors = require("cors");
 
-
 // initialize express
 const app = express();
 
@@ -23,9 +22,10 @@ app.use(cors({ origin: ["http://localhost:3000"] }));
 app.use("/user", UserRouter);
 app.use("/util", utilRouter);
 
-app.use("/artwork",ArtworkRouter);
-app.use("/exhibition",ExhibitionRouter);
+app.use("/artwork", ArtworkRouter);
+app.use("/exhibition", ExhibitionRouter);
 
+app.use(express.static("./static"));
 
 // starting the server
 app.listen(port, () => {

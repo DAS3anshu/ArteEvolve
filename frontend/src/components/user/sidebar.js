@@ -18,7 +18,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { useNavigate } from "react-router-dom";
-import { Logout, VerifiedUser } from "@mui/icons-material";
+import { Home, Logout, VerifiedUser } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
 
 const drawerWidth = 240;
@@ -121,16 +121,29 @@ export default function Sidebar({ sidebarOptions, children, title }) {
           <Typography variant="h6" noWrap component="div">
             {title}
           </Typography>
-          <Box sx={{ flexGrow: 1 }} />
-
-          <Tooltip title="User Options">
-            <IconButton sx={{ ml: 3 }} color="inherit">
-              <VerifiedUser />
+          <Tooltip title="Home">
+            <IconButton
+              sx={{ ml: 3 }}
+              color="inherit"
+              onClick={(e) => navigate("/main/home")}
+            >
+              <Home />
             </IconButton>
           </Tooltip>
-          <IconButton sx={{ ml: 3 }} color="inherit">
-            <Logout />
-          </IconButton>
+          <Box sx={{ flexGrow: 1 }} />
+
+          <Tooltip title="Logout">
+            <IconButton
+              sx={{ ml: 3 }}
+              color="inherit"
+              onClick={(e) => {
+                sessionStorage.removeItem("user");
+                navigate("/main/login");
+              }}
+            >
+              <Logout />
+            </IconButton>
+          </Tooltip>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>

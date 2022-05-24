@@ -23,26 +23,26 @@ import { ListItemIcon, ListItemText } from "@mui/material";
 import { useEffect, useState } from "react";
 
 const pages = [
-  {
-    name: "Art Evolve",
-    link: "/list",
-  },
+  // {
+  //   name: "Browse Ex",
+  //   link: "/list",
+  // },
 ];
 
 const guestUser = [
   {
     name: "Home",
-    link: "/home",
+    link: "/main/home",
     icon: <Home />,
   },
   {
     name: "Login",
-    link: "/login",
+    link: "/main/login",
     icon: <Login />,
   },
   {
     name: "Signup",
-    link: "/signup",
+    link: "/main/signup",
     icon: <AppRegistration />,
   },
 ];
@@ -65,19 +65,24 @@ const Header = () => {
   const logout = () => {
     setAnchorElUser(null);
     sessionStorage.removeItem("user");
-    navigate("/login");
+    navigate("/main/login");
   };
 
   const userMenu = [
     {
       name: "Profile",
       icon: <AccountCircle />,
-      link: "/profile",
+      link: "/user/profile",
     },
     {
-      name: "Manage Vlogs",
+      name: "Manage Exhibitions",
       icon: <Subscriptions />,
-      link: "/managevlog",
+      link: "/user/manageexhibition",
+    },
+    {
+      name: "Manage Artworks",
+      icon: <Subscriptions />,
+      link: "/user/manageartwork",
     },
     {
       name: "Logout",
@@ -109,9 +114,14 @@ const Header = () => {
             variant="h5"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+            sx={{
+              mr: 2,
+              display: { xs: "none", md: "flex" },
+              fontWeight: 800,
+              fontFamily: "Berkshire Swash",
+            }}
           >
-            VLOGGER
+            ArtEvolve
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -258,4 +268,3 @@ const Header = () => {
   );
 };
 export default Header;
-             
