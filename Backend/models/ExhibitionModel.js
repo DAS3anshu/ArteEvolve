@@ -1,17 +1,17 @@
-const mongoose = require('../connection');
+const mongoose = require("../connection");
 
 const schema = new mongoose.Schema({
-    title : String,
-    category : String,
-    schedule : String,
-    admin : String,
-    ticketprice : Number,
-    createdAt : { type : Date, default: new Date() },
+  title: String,
+  theme: String,
+  thumbnail: String,
+  ticketprice: Number,
+  artworks: [{ type: mongoose.Types.ObjectId, ref: "artwork" }],
+  createdBy: { type: mongoose.Types.ObjectId, ref: "users" },
+  createdAt: Date,
 });
 
 // create model
-const model = mongoose.model("exhibition" , schema);
-
+const model = mongoose.model("exhibition", schema);
 
 // export model
 module.exports = model;

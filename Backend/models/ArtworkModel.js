@@ -1,19 +1,17 @@
-const mongoose = require('../connection');
+const mongoose = require("../connection");
 
-
-// create structure as like schema is like structure 
+// create structure as like schema is like structure
 const schema = new mongoose.Schema({
-    image : String,
-    description : String,
-    artist : String,
-    details : String,
-    price : Number,
-    createdAt : { type : Date, default: new Date() },
+  title: String,
+  image: String,
+  description: String,
+  price: Number,
+  artist: { type: mongoose.Types.ObjectId, ref: "users" },
+  createdAt: Date,
 });
 
 // create model
-const model = mongoose.model("artwork" , schema);
-
+const model = mongoose.model("artwork", schema);
 
 // export model
 module.exports = model;
