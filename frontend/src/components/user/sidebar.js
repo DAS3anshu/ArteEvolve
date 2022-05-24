@@ -121,7 +121,7 @@ export default function Sidebar({ sidebarOptions, children, title }) {
           <Typography variant="h6" noWrap component="div">
             {title}
           </Typography>
-          <Tooltip title="Home">
+          <Tooltip title="Goto Home">
             <IconButton
               sx={{ ml: 3 }}
               color="inherit"
