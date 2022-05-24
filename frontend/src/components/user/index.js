@@ -1,4 +1,4 @@
-import { AccountCircle, Dashboard } from '@mui/icons-material';
+import { AccountCircle, AddPhotoAlternate, Collections, Dashboard, ManageAccounts, } from '@mui/icons-material';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../sidebar';
@@ -12,9 +12,19 @@ const User = () => {
       link : '/user/profile',
     },
     {
-      name : 'Dashboard',
-      icon : <Dashboard />,
-      link : '/admin/dashboard',
+      name : 'AddArtwork',
+      icon : <AddPhotoAlternate />,
+      link : '/user/AddArtwork',
+    },
+    {
+      name : 'ManageArtwork',
+      icon : <ManageAccounts />,
+      link : '/user/ManageArtwork',
+    },
+    {
+      name : 'ManageExhibition',
+      icon : <Collections />,
+      link : '/user/ManageExhibition',
     },
  
   ]

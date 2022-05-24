@@ -1,135 +1,227 @@
-import { Formik } from "formik";
+   
+import { Button, Card, CardContent, Container, TextField } from "@mui/material";
 import React from "react";
-import "./resource/signup.css";
-import google from "./resource/google.png";
-import signupmobile from "./resource/signupmobile.png";
-// import Swal from "sweetalert2";
-import * as Yup from "yup";
-const SignUp = () => {
-  // for sendind formdata to database
-  const userSubmit = (formdata) => {
+import { Formik } from "formik";
+import app_config from "../../config";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Box from "@mui/material/Box";
+import GoogleIcon from "@mui/icons-material/Google";
+import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+import Stack from "@mui/material/Stack";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import "./signup.css";
+
+const Signup = () => {
+  const signupStyles = {
+    background: "url(https://wallpaperaccess.com/full/1223823.jpg)",
+    height: "100%",
+  };
+
+  const url = app_config.backend_url;
+
+  //   1. Create the form object
+
+  const userForm = {
+    name: "",
+    mobile: "",
+    email: "",
+    password: "",
+    createdAt: new Date(),
+  };
+
+  const navigate = useNavigate();
+
+  const addHomePage = (formdata) => {
+    fetch(url + "/webpage/add", {
+      method: "POST",
+      body: JSON.stringify({
+        title: `${formdata.username}'s Webpage`,
+        createdBy: formdata._id,
+      }),
+      headers: { "Content-Type": "application/json" },
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log("webpage added!");
+      }
+    });
+  };
+
+  const formSubmit = (formdata) => {
     console.log(formdata);
 
-    // 1. Address
-    // 2. Request method
-    // 3. Data
-    // 4. Data Format
+    // asynchronous function returns promise
+    fetch(url + "/user/add", {
+      method: "POST",
+      body: JSON.stringify(formdata),
+      headers: { "Content-Type": "application/json" },
+    }).then((res) => {
+      if (res.status === 200) {
+        res.json().then((data) => {
+          console.log(data);
+          addHomePage(data);
+          Swal.fire({
+            icon: "success",
+            title: "Registered Successfully!!",
+          });
+        });
+      }
+    });
   };
-  //   4. Create Validation Schema
-  const phoneRegExp =
-    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-  const emailRegExp =
-    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-  const myValidation = Yup.object().shape({
-    username: Yup.string()
-      .min(5, "UserName Must Five Letter")
-      .max(20, "Too Long!")
-      .required("UserName Required"),
-    email: Yup.string()
-      .matches(emailRegExp, "Email Invalid")
-      .required("Enter Email"),
-    mobile: Yup.string()
-      .min(10, "Enter Valid Mobile Number")
-      .max(10, "Mobile Number Must Be 10 Digits")
-      .matches(phoneRegExp,"Mobile number is not valid")
-      .required("Phone No Required"),
-    password: Yup.string()
-      .min(6, "Too Short!!")
-      .max(12, "Very Long To Remember")
-      .required("Password Required"),
-  });
 
   return (
-    <>
-      <div className="mycontainer">
-        <div className="one-sub-con">
-          <img src={signupmobile} alt="" />
-          <div className="account">
-            <h1>Cerate a new Account</h1>
-          </div>
-        </div>
-        <div className="two-sub-con">
-          <Formik
-            initialValues={{
-              username: "",
-              email: "",
-              mobile: "",
-              password: "",
-            }}
-            validationSchema={myValidation}
-            onSubmit={userSubmit}
-          >
-            {({ values, handleSubmit, handleChange, errors, touched }) => (
-              <form onSubmit={handleSubmit}>
-                <div className="main-head">
-                  <h1>Sign Up</h1>
-                  <p>Let's set up your personal account</p>
+    <div style={styles.container}>
+      <Formik initialValues={userForm} onSubmit={formSubmit}>
+        {({ values, handleChange, handleSubmit }) => (
+          <section className="text-center text-lg-start">
+            <div className="container py-4">
+              <div className="row g-0 align-items-center">
+                <div className="col-lg-6 mb-5 mb-lg-0">
+                  <div className="card cascading-right">
+                    <div className="card-body p-5 shadow-5 text-center">
+                      <h2 className="fw-bold mb-5">Sign up now</h2>
+                      <form onSubmit={handleSubmit}>
+                        <div className="row">
+                          <div className="col-md-6 mb-4">
+                            <div className="form-outline">
+                              <TextField
+                                variant="standard"
+                                type="text"
+                                label="Full Name"
+                                id="name"
+                                onChange={handleChange}
+                                value={values.name}
+                                className="w-100"
+                              />
+                            </div>
+                          </div>
+                          <div className="col-md-6 mb-4">
+                            <div className="form-outline">
+                              <TextField
+                                variant="standard"
+                                type="email"
+                                label="Email Address"
+                                id="email"
+                                onChange={handleChange}
+                                value={values.email}
+                                className="w-100"
+                              />
+                            </div>
+                          </div>
+                        </div>
 
-                  <input
-                    name="username"
-                    id="username"
-                    value={values.username}
-                    onChange={handleChange}
-                    placeholder="UserName"
-                  />
-                  {errors.username && touched.username ? (
-                    <div className="error">{errors.username}</div>
-                  ) : null}
-                  <input
-                    name="email"
-                    id="email"
-                    value={values.email}
-                    onChange={handleChange}
-                    placeholder="Email"
-                  />
-                  {errors.email && touched.email ? (
-                    <div className="error">{errors.email}</div>
-                  ) : null}
-                  <input
-                    name="mobile"
-                    type="mobile"
-                    id="mobile"
-                    value={values.mobile}
-                    onChange={handleChange}
-                    placeholder="Mobile No"
-                  />
-                  {errors.mobile && touched.mobile ? (
-                    <div className="error">{errors.mobile}</div>
-                  ) : null}
-                  <input
-                    name="password"
-                    type="password"
-                    id="password"
-                    value={values.password}
-                    onChange={handleChange}
-                    placeholder="Password"
-                  />
-                  {errors.password && touched.password ? (
-                    <div className="error">{errors.password}</div>
-                  ) : null}
-                  <button type="submit">Cerate Account</button>
-                </div>
-                <div className="main-info">
-                  <p>OR</p>
-                  <div className="google">
-                    <button>
-                      {" "}
-                      <img src={google} alt="" />{" "}
-                      <span> Sign up with Google</span>
-                    </button>
+                        <div className="form-outline mb-4">
+                          <TextField
+                            variant="standard"
+                            type="text"
+                            label="Mobile No."
+                            id="mobile"
+                            onChange={handleChange}
+                            value={values.mobile}
+                            className="w-100"
+                          />
+                        </div>
+
+                        <div className="form-outline mb-4">
+                          <TextField
+                            variant="standard"
+                            type="password"
+                            label="Password"
+                            id="password"
+                            onChange={handleChange}
+                            value={values.password}
+                            className="w-100"
+                          />
+                        </div>
+
+                        <div className="form-check d-flex justify-content-center mb-4">
+                          <input
+                            className="form-check-input me-2"
+                            type="checkbox"
+                            value=""
+                            id="form2Example33"
+                            checked
+                          />
+                          <label
+                            className="form-check-label"
+                            for="form2Example33"
+                          >
+                            Subscribe to our newsletter
+                          </label>
+                        </div>
+
+                        <Button
+                          type="submit"
+                          className="btn-block mb-4"
+                          variant="outlined"
+                        >
+                          Sign up
+                        </Button>
+
+                        <div className="text-center">
+                          <p>or sign up with:</p>
+                          <button
+                            type="button"
+                            className="btn btn-link btn-floating mx-1"
+                          >
+                            <i className="fab fa-facebook-f"></i>
+                          </button>
+
+                          <button
+                            type="button"
+                            className="btn btn-link btn-floating mx-1"
+                          >
+                            <i className="fab fa-google"></i>
+                          </button>
+
+                          <button
+                            type="button"
+                            className="btn btn-link btn-floating mx-1"
+                          >
+                            <i className="fab fa-twitter"></i>
+                          </button>
+
+                          <button
+                            type="button"
+                            className="btn btn-link btn-floating mx-1"
+                          >
+                            <i className="fab fa-github"></i>
+                          </button>
+                        </div>
+                      </form>
+                    </div>
                   </div>
-
-                  <p>
-                    Already have an account? <a href="login"> Sign In</a>
-                  </p>
                 </div>
-              </form>
-            )}
-          </Formik>
-        </div>
-      </div>
-    </>
+
+                <div className="col-lg-6 mb-5 mb-lg-0">
+                  <img
+                    src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg"
+                    className="w-100 rounded-4 shadow-4"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+      </Formik>
+    </div>
   );
 };
 
-export default SignUp;
+const styles = {
+  container: {
+    background:
+      "linear-gradient(to right, #44004982, #44004982), url(https://wallpapershome.com/images/wallpapers/vr-3840x2160-virtual-reality-space-12369.jpg)",
+    height: "100vh",
+    backgroundSize: "cover",
+  },
+};
+
+export default Signup;
