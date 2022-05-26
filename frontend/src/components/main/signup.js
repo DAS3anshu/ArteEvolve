@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-   
-=======
->>>>>>> 25f4a236b621df96187876a483b41406497b1cd7
 import { Button, Card, CardContent, Container, TextField } from "@mui/material";
 import React from "react";
 import { Formik } from "formik";

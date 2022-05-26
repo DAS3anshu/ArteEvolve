@@ -68,7 +68,7 @@ const Login = () => {
                     style={{ borderRadius: "1rem" }}
                   >
                     <div class="card-body p-5 text-center">
-                      <h3 class="mb-5">Sign in</h3>
+                      <h2 class="mb-5">Registration Form</h2>
                       <form onSubmit={handleSubmit}>
                         <div class="form-outline mb-4">
                           <TextField
@@ -109,6 +109,7 @@ const Login = () => {
                             Remember password{" "}
                           </label>
                         </div>
+                        
 
                         <Button
                           className="btn-block"
@@ -117,6 +118,10 @@ const Login = () => {
                         >
                           Login
                         </Button>
+                        OR
+                        <br></br>
+                        <a href="/main/signup">
+                          SignUp</a>
                       </form>
 
                       <hr className="my-4" />
@@ -126,16 +131,20 @@ const Login = () => {
                         style={{ backgroundColor: "#dd4b39" }}
                         type="submit"
                       >
+                        <a href="https://www.google.com/">
                         <i className="fab fa-google me-2"></i> Sign in with
                         google
+                        </a>
                       </button>
                       <button
                         className="btn btn-lg btn-block btn-primary mb-2"
                         style={{ backgroundColor: "#3b5998" }}
                         type="submit"
                       >
+                        <a href="https://www.facebook.com/">
                         <i className="fab fa-facebook-f me-2"></i>Sign in with
                         facebook
+                        </a>
                       </button>
                     </div>
                   </div>
