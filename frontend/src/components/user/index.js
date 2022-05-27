@@ -1,4 +1,4 @@
-import { AccountCircle, Dashboard, Image } from "@mui/icons-material";
+import { AccountCircle, AddAPhoto, Dashboard, Image } from "@mui/icons-material";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./sidebar";
@@ -12,7 +12,7 @@ const User = () => {
     },
     {
       name: "Add Artwork",
-      icon: <Image />,
+      icon: <AddAPhoto />,
       link: "/user/addartwork",
     },
     {

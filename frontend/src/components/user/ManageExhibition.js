@@ -213,7 +213,7 @@ const ManageExhibition = () => {
         {({ values, handleSubmit, handleChange, errors, touched }) => (
           <div className="card">
             <div className="card-header">
-              <h3>Add New Artwork Here</h3>
+              <h3>Add New Exhibition Here</h3>
             </div>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
@@ -245,7 +245,7 @@ const ManageExhibition = () => {
                   variant="outlined"
                   className="float-end mt-5"
                 >
-                  Add Artwork
+                  Add Exhibition
                 </Button>
               </form>
             </div>

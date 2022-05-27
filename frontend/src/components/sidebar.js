@@ -146,7 +146,7 @@ export default function Sidebar({ sidebarOptions, children, title }) {
         <Divider />
         <List>
           {sidebarOptions.map(({ name, icon, link }) => (
-            <ListItemButton
+            <ListItemButton 
               onClick={(e) => navigate(link)}
               key={name}
               sx={{

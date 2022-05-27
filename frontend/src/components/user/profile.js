@@ -98,6 +98,14 @@ const Profile = (props) => {
   };
 
   return (
+    <div 
+    style={{
+      height: "100vh",
+      padding: "2rem",
+      background:
+        "linear-gradient(to right, #fff3, #fff3), url(https://wallpaperaccess.com/full/3899650.jpg)",
+    }}
+    >
     <div className="col-md-10 mx-auto">
       <Card>
         <CardContent>
@@ -177,6 +185,7 @@ const Profile = (props) => {
           </div>
         </CardContent>
       </Card>
+    </div>
     </div>
   );
 };
