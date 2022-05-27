@@ -86,7 +86,7 @@ const Home = () => {
             </div>
           </div>
           <button
-            className="btn btn-outline-primary my-5"
+            className="btn btn-outline-transparent my-5"
             onClick={(e) => navigate("/main/browse")}
           >
             SEE Exhibition Space
@@ -112,7 +112,7 @@ const Home = () => {
       
     
   </div>
-  <div class="col-sm-6 bg-transparent w-50">
+  <div class="col-sm-6 bg-transparent w">
     
       
         <h5 class="card-title">Special title treatment</h5>
@@ -123,6 +123,75 @@ const Home = () => {
   </div>
 </div>
 </div>
+      </section>
+      
+      <section>
+        <div className="container text-muted text-center">
+          <h2 className="display-5">MOBILITY</h2>
+          <h3 className="display-6">Take your exhibition with you wherever you go</h3>
+          <h4>Transform your exhibition space into a mobile gallery and take it with you when you travel</h4>
+          <div className="row text-center">
+            <div className="col-md-4">
+              <div className="card">
+                <div className="card-body">
+                  <img
+                    style={{
+                      height: "10rem",
+                      display: "block",
+                      margin: "auto",
+                    }}
+                    src="https://vrallart.com/icons/stakeholders/MEETINGS.svg"
+                  />
+                  <h1><b>Bring To Meeting</b></h1>
+                  <hr />
+                  <p>Show collectors your past and current 
+                    exhibitions in your virtual gallery sapce.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="card">
+                <div className="card-body">
+                  <img 
+                     style={{
+                      height: "10rem",
+                      display: "block",
+                      margin: "auto",
+                     }}
+                     src="https://vrallart.com/icons/stakeholders/ARTFAIRS.svg"
+                     />
+                  <h1><b>TAke To Art Fair</b></h1>
+                  <hr />
+                  <p>Present an unlimited number of artworks and 
+                    exhibitions regardless of your booth size.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="card">
+                <div className="card-body">
+                <img 
+                     style={{
+                      height: "10rem",
+                      display: "block",
+                      margin: "auto",
+                     }}
+                     src="https://vrallart.com/icons/stakeholders/ONLINE.svg"
+                     />
+                  <h1><b>Share Online</b></h1>
+                  <hr />
+                  <p>share a link to your exhibition with anyone who has VR equipment.
+                    Embed exhibition on your websites.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </section>
     </div>
   );
