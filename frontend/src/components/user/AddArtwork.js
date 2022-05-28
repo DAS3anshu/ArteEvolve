@@ -81,11 +81,12 @@ const AddArtwork = () => {
       }}
     >
       <div className="container">
-        <div className="row">
+        <div className="row justify-content-center h-100">
           <div className="col-md-7">
             <Formik initialValues={userForm} onSubmit={userSubmit}>
               {({ values, handleSubmit, handleChange, errors, touched }) => (
-                <div className="card">
+                
+                <div className="card ">
                   <div className="card-header">
                     <h3>Add New Artwork Here</h3>
                   </div>
@@ -137,7 +138,7 @@ const AddArtwork = () => {
               )}
             </Formik>
           </div>
-          <div className="col-md-5"></div>
+          {/* <div className="col-md-5"></div> */}
         </div>
       </div>
     </div>

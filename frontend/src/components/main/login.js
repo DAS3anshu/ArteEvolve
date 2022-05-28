@@ -131,7 +131,7 @@ const Login = () => {
                         style={{ backgroundColor: "#dd4b39" }}
                         type="submit"
                       >
-                        <a href="https://www.google.com/">
+                        <a href="https://www.google.com/" style={{ color:"white"}}>
                         <i className="fab fa-google me-2"></i> Sign in with
                         google
                         </a>
@@ -141,7 +141,7 @@ const Login = () => {
                         style={{ backgroundColor: "#3b5998" }}
                         type="submit"
                       >
-                        <a href="https://www.facebook.com/">
+                        <a href="https://www.facebook.com/" style={{ color:"white"}}>
                         <i className="fab fa-facebook-f me-2"></i>Sign in with
                         facebook
                         </a>

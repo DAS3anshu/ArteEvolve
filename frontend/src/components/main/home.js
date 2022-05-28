@@ -127,7 +127,7 @@ const Home = () => {
       
       <section>
         <div className="container text-muted text-center">
-          <h2 className="display-5">MOBILITY</h2>
+          <h2 >MOBILITY</h2>
           <h3 className="display-6">Take your exhibition with you wherever you go</h3>
           <h4>Transform your exhibition space into a mobile gallery and take it with you when you travel</h4>
           <div className="row text-center">
@@ -142,7 +142,7 @@ const Home = () => {
                     }}
                     src="https://vrallart.com/icons/stakeholders/MEETINGS.svg"
                   />
-                  <h1><b>Bring To Meeting</b></h1>
+                  <h4><b>Bring To Meeting</b></h4>
                   <hr />
                   <p>Show collectors your past and current 
                     exhibitions in your virtual gallery sapce.
@@ -161,7 +161,7 @@ const Home = () => {
                      }}
                      src="https://vrallart.com/icons/stakeholders/ARTFAIRS.svg"
                      />
-                  <h1><b>TAke To Art Fair</b></h1>
+                  <h4><b>Take To Art Fair</b></h4>
                   <hr />
                   <p>Present an unlimited number of artworks and 
                     exhibitions regardless of your booth size.
@@ -180,7 +180,7 @@ const Home = () => {
                      }}
                      src="https://vrallart.com/icons/stakeholders/ONLINE.svg"
                      />
-                  <h1><b>Share Online</b></h1>
+                  <h4><b>Share Online</b></h4>
                   <hr />
                   <p>share a link to your exhibition with anyone who has VR equipment.
                     Embed exhibition on your websites.
