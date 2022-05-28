@@ -75,14 +75,14 @@ const Signup = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div style={styles.container } >
       <Formik initialValues={userForm} onSubmit={formSubmit}>
         {({ values, handleChange, handleSubmit }) => (
           <section className="text-center text-lg-start">
             <div className="container py-4">
               <div className="row g-0 align-items-center">
                 <div className="col-lg-6 mb-5 mb-lg-0">
-                  <div className="card cascading-right">
+                  <div className="card cascading-right" style={{background:"url(https://p.kindpng.com/picc/s/265-2654894_plain-vector-white-background-png-free-download-lighting.png)", backgroundSize:"cover", backgroundRepeat:"no-repeat"}}>
                     <div className="card-body p-5 shadow-5 text-center">
                       <h2 className="fw-bold mb-5">Sign up now</h2>
                       <form onSubmit={handleSubmit}>
@@ -157,8 +157,8 @@ const Signup = () => {
 
                         <Button
                           type="submit"
-                          className="btn-block mb-4"
-                          variant="outlined"
+                          className="btn-block  mb-4"
+                          variant="contained"
                         >
                           Sign up
                         </Button>
@@ -167,28 +167,34 @@ const Signup = () => {
                           <p>or sign up with:</p>
                           <button
                             type="button"
-                            className="btn btn-link btn-floating mx-1"
+                            className="btn btn-primary btn-floating mx-1"
+                            style={{ backgroundColor: "#3b5998" }}
                           >
                             <i className="fab fa-facebook-f"></i>
                           </button>
 
                           <button
                             type="button"
-                            className="btn btn-link btn-floating mx-1"
+                            className="btn btn-primary btn-floating mx-1"
+                            style={{ backgroundColor: "#dd4b39" }}
+                            
                           >
                             <i className="fab fa-google"></i>
                           </button>
 
                           <button
                             type="button"
-                            className="btn btn-link btn-floating mx-1"
+                            className="btn btn-primary btn-floating mx-1"
+                            
+                            style={{ backgroundColor: "#55acee" }}
                           >
                             <i className="fab fa-twitter"></i>
                           </button>
 
                           <button
                             type="button"
-                            className="btn btn-link btn-floating mx-1"
+                            className="btn btn-dark btn-floating mx-1"
+                            
                           >
                             <i className="fab fa-github"></i>
                           </button>

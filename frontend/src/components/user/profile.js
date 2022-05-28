@@ -107,10 +107,10 @@ const Profile = (props) => {
     }}
     >
     <div className="col-md-10 mx-auto">
-      <Card>
+      <Card style={{background: "url(https://niemvuilaptrinh.ams3.cdn.digitaloceanspaces.com/background-css-javascript/CSS%20background%20Animation.png)",backgroundRepeat:"no-repeat" ,backgroundSize:"cover", backgroundPosition:"center"}}>
         <CardContent>
           <div className="row">
-            <h3 className="text-center">Manage Profile</h3>
+            <h1 className="text-center">Manage Profile</h1>
             <div className="col-md-4">
               <img
                 src={
