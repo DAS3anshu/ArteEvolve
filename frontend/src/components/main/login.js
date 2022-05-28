@@ -11,6 +11,7 @@ import Box from "@mui/material/Box";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import Stack from "@mui/material/Stack";
+// import { GoogleLogin } from "react-google-login";
 
 const Login = () => {
   const url = app_config.backend_url;
@@ -81,7 +82,6 @@ const Login = () => {
                             className="w-100"
                           />
                         </div>
-
                         <div className="form-outline mb-4">
                           <TextField
                             variant="standard"
@@ -93,7 +93,6 @@ const Login = () => {
                             className="w-100"
                           />
                         </div>
-
                         <div className="form-check d-flex justify-content-start mb-4">
                           <input
                             className="form-check-input"
@@ -109,8 +108,6 @@ const Login = () => {
                             Remember password{" "}
                           </label>
                         </div>
-                        
-
                         <Button
                           className="btn-block"
                           type="submit"
@@ -118,34 +115,9 @@ const Login = () => {
                         >
                           Login
                         </Button>
-                        OR
-                        <br></br>
-                        <a href="/main/signup">
-                          SignUp</a>
                       </form>
 
                       <hr className="my-4" />
-
-                      <button
-                        className="btn btn-lg btn-block btn-primary"
-                        style={{ backgroundColor: "#dd4b39" }}
-                        type="submit"
-                      >
-                        <a href="https://www.google.com/" style={{ color:"white"}}>
-                        <i className="fab fa-google me-2"></i> Sign in with
-                        google
-                        </a>
-                      </button>
-                      <button
-                        className="btn btn-lg btn-block btn-primary mb-2"
-                        style={{ backgroundColor: "#3b5998" }}
-                        type="submit"
-                      >
-                        <a href="https://www.facebook.com/" style={{ color:"white"}}>
-                        <i className="fab fa-facebook-f me-2"></i>Sign in with
-                        facebook
-                        </a>
-                      </button>
                     </div>
                   </div>
                 </div>

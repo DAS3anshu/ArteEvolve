@@ -1,3 +1,4 @@
+import { Card, CardContent, CardMedia } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import app_config from "../../config";
@@ -48,13 +49,14 @@ const ManageArtworks = () => {
       return artworkList.map(
         ({ _id, title, image, description, price, createdAt }) => (
           <div className="col-md-3">
-            <div className="card">
-              <img
-                className="card-img-top"
-                src={url + "/uploads/" + image}
+            <Card>
+              <CardMedia
+                component="img"
+                image={url + "/uploads/" + image}
                 alt={title}
+                height="300"
               />
-              <div className="card-body">
+              <CardContent className="card-body">
                 <h3 className="text-muted">{title}</h3>
                 <button className="btn btn-primary">
                   <i class="fas fa-pen"></i> Edit
@@ -65,8 +67,8 @@ const ManageArtworks = () => {
                 >
                   <i class="fas fa-trash"></i> Delete
                 </button>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           </div>
         )
       );

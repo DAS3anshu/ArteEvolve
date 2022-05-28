@@ -107,43 +107,52 @@ const ManageExhibition = () => {
           createdAt,
           artworks,
         }) => (
-          <div className="col-md-3">
-            <div className="card">
-              <img
-                className="card-img-top"
-                src={url + "/uploads/" + thumbnail}
-                alt={title}
-              />
-              <div className="card-body">
-                <h3 className="text-muted">{title}</h3>
-                <button className="btn btn-primary">
-                  <i class="fas fa-pen"></i> Edit
-                </button>
-                <button
-                  className="btn btn-danger"
-                  onClick={(e) => deleteData(_id)}
-                >
-                  <i class="fas fa-trash"></i> Delete
-                </button>
-                <button
-                  className="btn btn-success"
-                  onClick={(e) => navigate("/main/exhibition/" + _id)}
-                >
-                  <i class="fas fa-eye"></i> View
-                </button>
-                <ul className="list-group">{showAvailArtwork(_id)}</ul>
-                <div className="row mt-5">
-                  {artworks.map((art) => (
-                    <div className="col-md-2">
-                      <div className="card">
-                        <img
-                          src={url + "/uploads/" + art.image}
-                          className="card-img-top"
-                          alt=""
-                        />
+          <div className="card">
+            <div className="row">
+              <div className="col-md-3">
+                <img
+                  className="card-img-top"
+                  src={url + "/uploads/" + thumbnail}
+                  alt={title}
+                />
+              </div>
+              <div className="col-md-9">
+                <div className="card-body">
+                  <h3 className="text-muted">{title}</h3>
+                  <button className="btn btn-primary">
+                    <i class="fas fa-pen"></i> Edit
+                  </button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={(e) => deleteData(_id)}
+                  >
+                    <i class="fas fa-trash"></i> Delete
+                  </button>
+                  <button
+                    className="btn btn-success"
+                    onClick={(e) => navigate("/main/exhibition/" + _id)}
+                  >
+                    <i class="fas fa-eye"></i> View
+                  </button>
+                  <ul className="list-group">{showAvailArtwork(_id)}</ul>
+                  <div className="row mt-5">
+                    {artworks.map((art) => (
+                      <div className="col-md-2">
+                        <div className="card">
+                          <img
+                            src={url + "/uploads/" + art.image}
+                            className="card-img-top"
+                            alt=""
+                          />
+                          <div className="card-footer">
+                            <button className="btn btn-danger w-100">
+                              <i class="fas fa-trash"></i>
+                            </button>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -280,7 +289,7 @@ const ManageExhibition = () => {
           )}
         </div>
       </div>
-      <div className="card">
+      <div className="card mt-5">
         <div className="card-header">
           <h3>Manage Exhibitions</h3>
         </div>
