@@ -68,7 +68,7 @@ const Login = () => {
                     style={{ borderRadius: "1rem" }}
                   >
                     <div class="card-body p-5 text-center">
-                      <h2 class="mb-5">Registration Form</h2>
+                      <h2 class="mb-5">Login</h2>
                       <form onSubmit={handleSubmit}>
                         <div class="form-outline mb-4">
                           <TextField
