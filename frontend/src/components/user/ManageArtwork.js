@@ -56,13 +56,14 @@ const ManageArtworks = () => {
                 alt={title}
                 height="300"
               />
-              <CardContent className="card-body">
+              <CardContent className="card-body text-center">
                 <h3 className="text-muted">{title}</h3>
                 <button className="btn btn-primary">
                   <i class="fas fa-pen"></i> Edit
                 </button>
                 <button
                   className="btn btn-danger"
+                  
                   onClick={(e) => deleteData(_id)}
                 >
                   <i class="fas fa-trash"></i> Delete
