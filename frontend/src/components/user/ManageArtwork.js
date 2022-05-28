@@ -49,7 +49,7 @@ const ManageArtworks = () => {
       return artworkList.map(
         ({ _id, title, image, description, price, createdAt }) => (
           <div className="col-md-3">
-            <Card>
+            <Card >
               <CardMedia
                 component="img"
                 image={url + "/uploads/" + image}

@@ -220,9 +220,9 @@ const ManageExhibition = () => {
     return (
       <Formik initialValues={userForm} onSubmit={userSubmit}>
         {({ values, handleSubmit, handleChange, errors, touched }) => (
-          <div className="card">
+          <div className="card" >
             <div className="card-header">
-              <h3>Add New Exhibition Here</h3>
+              <h1>Create New Exhibition </h1>
             </div>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
@@ -251,10 +251,10 @@ const ManageExhibition = () => {
 
                 <Button
                   type="submit"
-                  variant="outlined"
-                  className="float-end mt-5"
+                  variant="contained"
+                  className="float-end mt-5 "
                 >
-                  Add Exhibition
+                  Create
                 </Button>
               </form>
             </div>
@@ -273,23 +273,24 @@ const ManageExhibition = () => {
           "linear-gradient(to right, #fff3, #fff3), url(https://wallpaperaccess.com/full/3899650.jpg)",
       }}
     >
-      <div className="card">
-        <div className="card-body">
+      <div className="card" style={{background: "url(https://niemvuilaptrinh.ams3.cdn.digitaloceanspaces.com/background-css-javascript/CSS%20background%20Animation.png)",backgroundRepeat:"no-repeat" ,backgroundSize:"cover", backgroundPosition:"center"}}>
+        <div className="card-body" >
           {addNew ? (
             exhibitionAddForm()
           ) : (
             <button
               className="btn btn-success btn-lg"
               onClick={(e) => setAddNew(true)}
+
             >
               {" "}
-              <i class="fa fa-plus-circle" aria-hidden="true"></i> Add New
+              <i class="fa fa-plus-circle" aria-hidden="true" ></i> Create
               Exhibition
             </button>
           )}
         </div>
       </div>
-      <div className="card mt-5">
+      <div className="card mt-5" style={{background: "url(https://niemvuilaptrinh.ams3.cdn.digitaloceanspaces.com/background-css-javascript/CSS%20background%20Animation.png)",backgroundRepeat:"no-repeat" ,backgroundSize:"cover", backgroundPosition:"center"}}>
         <div className="card-header">
           <h3>Manage Exhibitions</h3>
         </div>

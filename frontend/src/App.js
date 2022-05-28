@@ -59,7 +59,7 @@ function App() {
             <Route element={<ManageArtwork />} path="manageartwork" />
             <Route element={<ManageExhibition />} path="managexhibition" />
           </Route>
-          <Route element={<Navigate to="/main/login" />} path=""></Route>
+          <Route element={<Navigate to="/main/home" />} path=""></Route>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

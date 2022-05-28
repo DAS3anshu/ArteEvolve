@@ -86,9 +86,9 @@ const AddArtwork = () => {
             <Formik initialValues={userForm} onSubmit={userSubmit}>
               {({ values, handleSubmit, handleChange, errors, touched }) => (
                 
-                <div className="card ">
+                <div className="card " style={{background: "url(https://niemvuilaptrinh.ams3.cdn.digitaloceanspaces.com/background-css-javascript/CSS%20background%20Animation.png)",backgroundRepeat:"no-repeat" ,backgroundSize:"cover", backgroundPosition:"center"}}>
                   <div className="card-header">
-                    <h3>Add New Artwork Here</h3>
+                    <h2>Add New Artwork Here</h2>
                   </div>
                   <div className="card-body">
                     <form onSubmit={handleSubmit}>
@@ -127,7 +127,7 @@ const AddArtwork = () => {
 
                       <Button
                         type="submit"
-                        variant="outlined"
+                        variant="contained"
                         className="float-end mt-5"
                       >
                         Add Artwork
