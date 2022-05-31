@@ -49,6 +49,11 @@ const BrowseExhibition = () => {
   }, []);
 
   const checkAdded = (users) => {
+    if (currentUser !== null) return users.includes(currentUser._id);
+    return false;
+  };
+
+  const book = (data) => {
     if (currentUser === null) {
       Swal.fire({
         icon: "error",
@@ -57,7 +62,8 @@ const BrowseExhibition = () => {
       });
       return;
     }
-    return users.includes(currentUser._id);
+    sessionStorage.setItem("exhibition", JSON.stringify(data));
+    navigate("/main/book");
   };
 
   const displayData = () => {
@@ -100,23 +106,19 @@ const BrowseExhibition = () => {
                 {!checkAdded(users) ? (
                   <button
                     className="btn btn-success"
-                    onClick={(e) => {
-                      sessionStorage.setItem(
-                        "exhibition",
-                        JSON.stringify({
-                          title,
-                          theme,
-                          createdBy,
-                          artworks,
-                          thumbnail,
-                          createdAt,
-                          _id,
-                          ticketprice,
-                          users,
-                        })
-                      );
-                      navigate("/main/book");
-                    }}
+                    onClick={(e) =>
+                      book({
+                        title,
+                        theme,
+                        createdBy,
+                        artworks,
+                        thumbnail,
+                        createdAt,
+                        _id,
+                        ticketprice,
+                        users,
+                      })
+                    }
                   >
                     Book Now
                   </button>
