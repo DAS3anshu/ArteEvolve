@@ -7,6 +7,7 @@ const schema = new mongoose.Schema({
   ticketprice: Number,
   artworks: [{ type: mongoose.Types.ObjectId, ref: "artwork" }],
   createdBy: { type: mongoose.Types.ObjectId, ref: "users" },
+  users: Array,
   createdAt: Date,
 });
 

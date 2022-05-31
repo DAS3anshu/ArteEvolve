@@ -1,9 +1,10 @@
 import { Search } from "@mui/icons-material";
-import { InputAdornment, Typography } from "@mui/material";
+import { Button, InputAdornment, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import app_config from "../../config";
 import TimeAgo from "javascript-time-ago";
+import Swal from "sweetalert2";
 
 const BrowseExhibition = () => {
   const [datalist, setDatalist] = useState([]);
@@ -40,24 +41,48 @@ const BrowseExhibition = () => {
   };
 
   const [filter, setFilter] = useState("");
-
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(sessionStorage.getItem("user"))
+  );
   useEffect(() => {
     fetchData();
   }, []);
 
+  const checkAdded = (users) => {
+    if (currentUser === null) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "You need to login first",
+      });
+      return;
+    }
+    return users.includes(currentUser._id);
+  };
+
   const displayData = () => {
     if (!loading) {
       return datalist.map(
-        ({ title, theme, createdBy, artworks, thumbnail, createdAt, _id }) => (
+        ({
+          title,
+          theme,
+          createdBy,
+          artworks,
+          thumbnail,
+          createdAt,
+          _id,
+          ticketprice,
+          users,
+        }) => (
           <div key={_id} class="col-md-12 col-lg-4 mb-4 mb-lg-0">
             <div class="card mt-5">
-              <NavLink className="ripple" to={"/main/exhibition/" + _id}>
-                <img
-                  src={url + "/uploads/" + thumbnail}
-                  class="card-img-top"
-                  alt="Laptop"
-                />
-              </NavLink>
+              <div
+                className="crop-div"
+                style={{
+                  background: "url('" + url + "/uploads/" + thumbnail + "')",
+                }}
+              ></div>
+
               <div class="card-body">
                 <div class="d-flex justify-content-between">
                   <p class="small">
@@ -66,12 +91,53 @@ const BrowseExhibition = () => {
                     </a>
                   </p>
                 </div>
-
                 <h4 class="mb-0">{title}</h4>
                 <h5 class="mb-0">{createdBy.email}</h5>
                 <p className="text-muted float-end">
                   {timeAgo.format(new Date(createdAt))}
                 </p>
+                <div className="mt-5"></div>
+                {!checkAdded(users) ? (
+                  <button
+                    className="btn btn-success"
+                    onClick={(e) => {
+                      sessionStorage.setItem(
+                        "exhibition",
+                        JSON.stringify({
+                          title,
+                          theme,
+                          createdBy,
+                          artworks,
+                          thumbnail,
+                          createdAt,
+                          _id,
+                          ticketprice,
+                          users,
+                        })
+                      );
+                      navigate("/main/book");
+                    }}
+                  >
+                    Book Now
+                  </button>
+                ) : (
+                  <button className="btn btn-success" disabled>
+                    Already Purchased
+                  </button>
+                )}
+                &nbsp;&nbsp;
+                {checkAdded(users) ? (
+                  <button
+                    className="btn btn-danger"
+                    onClick={(e) => {
+                      navigate("/main/exhibition/" + _id);
+                    }}
+                  >
+                    Open Exhibition
+                  </button>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>

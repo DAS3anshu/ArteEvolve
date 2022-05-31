@@ -41,3 +41,13 @@
   background: #ca00d7 !important;
   color: white !important;
 } */
+
+.full-page {
+  height: 100vh;
+}
+
+.crop-div {
+  background-position: center;
+  background-size: cover;
+  height: 400px;
+}

@@ -23,6 +23,13 @@ import Exhibition3 from "./components/main/exhibition3";
 import BrowseExhibition from "./components/main/browseExhibition";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en.json";
+import BookExhibition from "./components/main/bookExhibition";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripe = loadStripe(
+  "pk_test_51L5OraSBJsajMKdg4u3zoiyg8Ip36g437efwVPhwXbOaB1ICwUjpV4kvSnzQyCpgJA8n2cckhxi206dBPGmdoCSb00qL6DDWR2"
+);
 
 function App() {
   TimeAgo.addDefaultLocale(en);
@@ -48,6 +55,14 @@ function App() {
             <Route element={<Home />} path="home" />
             <Route element={<Login />} path="login" />
             <Route element={<SignUp />} path="signup" />
+            <Route
+              element={
+                <Elements stripe={stripe}>
+                  <BookExhibition />
+                </Elements>
+              }
+              path="book"
+            />
             <Route element={<Exhibition />} path="exhibition/:exid" />
             <Route element={<Exhibition3 />} path="exhibition3" />
             <Route element={<ResetPassword />} path="resetpassword" />
@@ -55,6 +70,7 @@ function App() {
           </Route>
           <Route element={<User />} path="user">
             <Route element={<Userprofile />} path="profile" />
+            <Route element={<AddArtwork />} path="addArtwork" />
             <Route element={<AddArtwork />} path="addArtwork" />
             <Route element={<ManageArtwork />} path="manageartwork" />
             <Route element={<ManageExhibition />} path="managexhibition" />

@@ -25,6 +25,19 @@ app.use("/util", utilRouter);
 app.use("/artwork", ArtworkRouter);
 app.use("/exhibition", ExhibitionRouter);
 
+const stripe_sk =
+  "sk_test_51L5OraSBJsajMKdgRnznDqHsp2wTH24h7N7oUvK9Od1xcr5ab81c24TTVa51JbVCvR13Qbls3qvw9UtsbPHoboVo00fXiUvnjt";
+const stripe = require("stripe")(stripe_sk);
+
+app.post("/create-payment-intent", async (req, res) => {
+  const data = req.body;
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: data.amount,
+    currency: "inr",
+  });
+  res.status(200).json(paymentIntent);
+});
+
 app.use(express.static("./static"));
 
 // starting the server

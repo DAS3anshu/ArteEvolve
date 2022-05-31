@@ -32,7 +32,7 @@ router.post("/add", (req, res) => {
 });
 
 router.get("/getbyuser/:userid", (req, res) => {
-  Model.find({ artist: req.params.userid })
+  Model.find({ createdBy: req.params.userid })
     .populate("artworks")
     .then((data) => {
       res.status(200).json(data);
