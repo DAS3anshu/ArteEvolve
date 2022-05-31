@@ -150,7 +150,7 @@ export default function Sidebar({ sidebarOptions, children, title }) {
           </Tooltip>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open} >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -161,7 +161,7 @@ export default function Sidebar({ sidebarOptions, children, title }) {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
+        <List >
           {sidebarOptions.map(({ name, icon, link }) => (
             <ListItemButton
               onClick={(e) => navigate(link)}
@@ -170,6 +170,7 @@ export default function Sidebar({ sidebarOptions, children, title }) {
                 minHeight: 48,
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
+                
               }}
             >
               <ListItemIcon
@@ -178,6 +179,7 @@ export default function Sidebar({ sidebarOptions, children, title }) {
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
                 }}
+                
               >
                 {icon}
               </ListItemIcon>
@@ -186,7 +188,7 @@ export default function Sidebar({ sidebarOptions, children, title }) {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1 }}>
+      <Box component="main" sx={{ flexGrow: 1 }} >
         <DrawerHeader />
         {children}
       </Box>

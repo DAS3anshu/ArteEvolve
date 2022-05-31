@@ -82,15 +82,16 @@ const ManageExhibition = () => {
   const showAvailArtwork = (exid) => {
     if (!aLoading) {
       return artworkList.map((art) => (
-        <li className="list-group-item">
+        <div className="list-group-item ">
           {art.title}
-          <button
-            className="btn btn-primary"
+          <div
+            className="btn btn-primary " 
+            
             onClick={(e) => addArtworkTo(art._id, exid)}
           >
             Add
-          </button>
-        </li>
+          </div>
+        </div>
       ));
     }
   };
@@ -119,11 +120,11 @@ const ManageExhibition = () => {
               <div className="col-md-9">
                 <div className="card-body">
                   <h3 className="text-muted">{title}</h3>
-                  <button className="btn btn-primary">
+                  <button className="btn btn-primary me-2">
                     <i class="fas fa-pen"></i> Edit
                   </button>
                   <button
-                    className="btn btn-danger"
+                    className="btn btn-danger me-2"
                     onClick={(e) => deleteData(_id)}
                   >
                     <i class="fas fa-trash"></i> Delete
@@ -134,14 +135,16 @@ const ManageExhibition = () => {
                   >
                     <i class="fas fa-eye"></i> View
                   </button>
-                  <ul className="list-group">{showAvailArtwork(_id)}</ul>
-                  <div className="row mt-5">
+                  <ul className="list-group mt-3">{showAvailArtwork(_id)}</ul>
+                  <div className="row mt-3 ">
                     {artworks.map((art) => (
-                      <div className="col-md-2">
-                        <div className="card">
+                      <div className="col-md-2 mt-3">
+                        <div className="card "
+                        >
                           <img
                             src={url + "/uploads/" + art.image}
-                            className="card-img-top"
+                            className="card-img-top "
+                            height="100"
                             alt=""
                           />
                           <div className="card-footer">
