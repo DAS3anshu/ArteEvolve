@@ -41,3 +41,7 @@
   background: #ca00d7 !important;
   color: white !important;
 } */
+
+.full-page {
+  height: 100vh;
+}

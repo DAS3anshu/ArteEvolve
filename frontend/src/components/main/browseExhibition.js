@@ -1,5 +1,5 @@
 import { Search } from "@mui/icons-material";
-import { InputAdornment, Typography } from "@mui/material";
+import { Button, InputAdornment, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import app_config from "../../config";
@@ -51,13 +51,11 @@ const BrowseExhibition = () => {
         ({ title, theme, createdBy, artworks, thumbnail, createdAt, _id }) => (
           <div key={_id} class="col-md-12 col-lg-4 mb-4 mb-lg-0">
             <div class="card mt-5">
-              <NavLink className="ripple" to={"/main/exhibition/" + _id}>
-                <img
-                  src={url + "/uploads/" + thumbnail}
-                  class="card-img-top"
-                  alt="Laptop"
-                />
-              </NavLink>
+              <img
+                src={url + "/uploads/" + thumbnail}
+                class="card-img-top"
+                alt="Laptop"
+              />
               <div class="card-body">
                 <div class="d-flex justify-content-between">
                   <p class="small">
@@ -72,6 +70,26 @@ const BrowseExhibition = () => {
                 <p className="text-muted float-end">
                   {timeAgo.format(new Date(createdAt))}
                 </p>
+                <button
+                  className="btn btn-success"
+                  onClick={(e) => {
+                    sessionStorage.setItem(
+                      "exhibition",
+                      JSON.stringify({
+                        title,
+                        theme,
+                        createdBy,
+                        artworks,
+                        thumbnail,
+                        createdAt,
+                        _id,
+                      })
+                    );
+                    navigate("/main/book");
+                  }}
+                >
+                  Book Now
+                </button>
               </div>
             </div>
           </div>
