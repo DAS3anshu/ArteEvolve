@@ -48,21 +48,22 @@ const ManageArtworks = () => {
     if (!loading) {
       return artworkList.map(
         ({ _id, title, image, description, price, createdAt }) => (
-          <div className="col-md-3">
-            <Card>
+          <div className="col-md-3 mt-5">
+            <Card >
               <CardMedia
                 component="img"
                 image={url + "/uploads/" + image}
                 alt={title}
                 height="300"
               />
-              <CardContent className="card-body">
-                <h3 className="text-muted">{title}</h3>
-                <button className="btn btn-primary">
+              <CardContent className="card-body text-center">
+                <h6 className="text-muted" height="30">{title}</h6>
+                <button className="btn btn-primary me-2">
                   <i class="fas fa-pen"></i> Edit
                 </button>
                 <button
-                  className="btn btn-danger"
+                  className="btn btn-danger "
+                  
                   onClick={(e) => deleteData(_id)}
                 >
                   <i class="fas fa-trash"></i> Delete

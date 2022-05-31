@@ -69,7 +69,7 @@ const Login = () => {
                     style={{ borderRadius: "1rem" }}
                   >
                     <div class="card-body p-5 text-center">
-                      <h2 class="mb-5">Registration Form</h2>
+                      <h2 class="mb-5">Login</h2>
                       <form onSubmit={handleSubmit}>
                         <div class="form-outline mb-4">
                           <TextField
@@ -108,6 +108,7 @@ const Login = () => {
                             Remember password{" "}
                           </label>
                         </div>
+                        
                         <Button
                           className="btn-block"
                           type="submit"
@@ -115,9 +116,20 @@ const Login = () => {
                         >
                           Login
                         </Button>
+                       
                       </form>
 
                       <hr className="my-4" />
+                      <div class="container">
+                          <div class="row">
+                            <div class = "col text-left" >
+                        <a class="link"  href="/main/resetpassword"> Forgot Password</a></div>
+                        <div class = "col text-right" style={{marginLeft : "30%"}}>
+                        <a class="link" href="/main/signup">Sign Up</a>
+                        </div>
+                        
+                        </div>
+                        </div>
                     </div>
                   </div>
                 </div>
