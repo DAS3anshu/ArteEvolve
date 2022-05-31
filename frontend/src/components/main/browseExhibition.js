@@ -79,7 +79,7 @@ const BrowseExhibition = () => {
               <div
                 className="crop-div"
                 style={{
-                  background: "url(" + url + "/uploads/" + thumbnail + ")",
+                  background: "url('" + url + "/uploads/" + thumbnail + "')",
                 }}
               ></div>
 
