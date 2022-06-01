@@ -2,6 +2,7 @@ import { Card, CardContent, CardMedia } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import app_config from "../../config";
+import UpdateArtwork from "./artworkupdate";
 
 const ManageArtworks = () => {
   const url = app_config.backend_url;
@@ -11,6 +12,8 @@ const ManageArtworks = () => {
 
   const [artworkList, setArtworkList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const [updateFormData, setUpdateFormData] = useState(null);
 
   const fetchData = () => {
     fetch(url + "/artwork/getbyuser/" + currentUser._id).then((res) => {
@@ -40,6 +43,13 @@ const ManageArtworks = () => {
       });
   };
 
+  const UpdateArt = (userdata) => {
+    // change the value of showUpdateForm to true
+    setShowUpdateForm(true);
+    // update the userFormData
+    setUpdateFormData(userdata);
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -48,8 +58,8 @@ const ManageArtworks = () => {
     if (!loading) {
       return artworkList.map(
         ({ _id, title, image, description, price, createdAt }) => (
-          <div className="col-md-3 mt-5">
-            <Card >
+          <div className="col-md-4 mt-5">
+            <Card>
               <CardMedia
                 component="img"
                 image={url + "/uploads/" + image}
@@ -57,13 +67,26 @@ const ManageArtworks = () => {
                 height="300"
               />
               <CardContent className="card-body text-center">
-                <h6 className="text-muted" height="30">{title}</h6>
-                <button className="btn btn-primary me-2">
+                <h6 className="text-muted" height="30">
+                  {title}
+                </h6>
+                <button
+                  className="btn btn-primary me-2"
+                  onClick={(e) =>
+                    UpdateArt({
+                      _id,
+                      title,
+                      image,
+                      description,
+                      price,
+                      createdAt,
+                    })
+                  }
+                >
                   <i class="fas fa-pen"></i> Edit
                 </button>
                 <button
                   className="btn btn-danger "
-                  
                   onClick={(e) => deleteData(_id)}
                 >
                   <i class="fas fa-trash"></i> Delete
@@ -117,7 +140,25 @@ const ManageArtworks = () => {
       <div className="container">
         <h1 className="text-white">Manage Artworks</h1>
         <hr />
-        <div className="row">{showData()}</div>;
+
+        <div className="row">
+          <div className="col-md-8">{showData()}</div>
+          <div className="col-md-4">
+            <div className="card">
+              <div className="card-body">
+                {showUpdateForm ? (
+                  <UpdateArtwork
+                    userForm={updateFormData}
+                    loadDataFromBackend={fetchData}
+                    showForm={setShowUpdateForm}
+                  ></UpdateArtwork>
+                ) : (
+                  <h3 className="text-muted">Select User to Update</h3>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

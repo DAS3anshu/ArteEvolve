@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import app_config from "../../config";
+import UpdateExhibition from "./exhibitionupdate";
 
 const ManageExhibition = () => {
   const url = app_config.backend_url;
@@ -18,6 +19,8 @@ const ManageExhibition = () => {
   const [artworkList, setArtworkList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [aLoading, setALoading] = useState(true);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const [updateFormData, setUpdateFormData] = useState(null);
 
   const fetchData = () => {
     fetch(url + "/exhibition/getbyuser/" + currentUser._id).then((res) => {
@@ -85,8 +88,7 @@ const ManageExhibition = () => {
         <div className="list-group-item ">
           {art.title}
           <div
-            className="btn btn-primary " 
-            
+            className="btn btn-primary "
             onClick={(e) => addArtworkTo(art._id, exid)}
           >
             Add
@@ -120,7 +122,20 @@ const ManageExhibition = () => {
               <div className="col-md-9">
                 <div className="card-body">
                   <h3 className="text-muted">{title}</h3>
-                  <button className="btn btn-primary me-2">
+                  <button
+                    className="btn btn-primary me-2"
+                    onClick={(e) =>
+                      UpdateArt({
+                        _id,
+                        title,
+                        thumbnail,
+                        description,
+                        price,
+                        createdAt,
+                        artworks,
+                      })
+                    }
+                  >
                     <i class="fas fa-pen"></i> Edit
                   </button>
                   <button
@@ -139,8 +154,7 @@ const ManageExhibition = () => {
                   <div className="row mt-3 ">
                     {artworks.map((art) => (
                       <div className="col-md-2 mt-3">
-                        <div className="card "
-                        >
+                        <div className="card ">
                           <img
                             src={url + "/uploads/" + art.image}
                             className="card-img-top "
@@ -219,11 +233,18 @@ const ManageExhibition = () => {
     });
   };
 
+  const UpdateArt = (userdata) => {
+    // change the value of showUpdateForm to true
+    setShowUpdateForm(true);
+    // update the userFormData
+    setUpdateFormData(userdata);
+  };
+
   const exhibitionAddForm = () => {
     return (
       <Formik initialValues={userForm} onSubmit={userSubmit}>
         {({ values, handleSubmit, handleChange, errors, touched }) => (
-          <div className="card" >
+          <div className="card">
             <div className="card-header">
               <h1>Create New Exhibition </h1>
             </div>
@@ -276,28 +297,62 @@ const ManageExhibition = () => {
           "linear-gradient(to right, #fff3, #fff3), url(https://wallpaperaccess.com/full/3899650.jpg)",
       }}
     >
-      <div className="card" style={{background: "url(https://niemvuilaptrinh.ams3.cdn.digitaloceanspaces.com/background-css-javascript/CSS%20background%20Animation.png)",backgroundRepeat:"no-repeat" ,backgroundSize:"cover", backgroundPosition:"center"}}>
-        <div className="card-body" >
+      <div
+        className="card"
+        style={{
+          background:
+            "url(https://niemvuilaptrinh.ams3.cdn.digitaloceanspaces.com/background-css-javascript/CSS%20background%20Animation.png)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="card-body">
           {addNew ? (
             exhibitionAddForm()
           ) : (
             <button
               className="btn btn-success btn-lg"
               onClick={(e) => setAddNew(true)}
-
             >
               {" "}
-              <i class="fa fa-plus-circle" aria-hidden="true" ></i> Create
+              <i class="fa fa-plus-circle" aria-hidden="true"></i> Create
               Exhibition
             </button>
           )}
         </div>
       </div>
-      <div className="card mt-5" style={{background: "url(https://niemvuilaptrinh.ams3.cdn.digitaloceanspaces.com/background-css-javascript/CSS%20background%20Animation.png)",backgroundRepeat:"no-repeat" ,backgroundSize:"cover", backgroundPosition:"center"}}>
+      <div
+        className="card mt-5"
+        style={{
+          background:
+            "url(https://niemvuilaptrinh.ams3.cdn.digitaloceanspaces.com/background-css-javascript/CSS%20background%20Animation.png)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="card-header">
           <h3>Manage Exhibitions</h3>
         </div>
-        <div className="card-body">{showData()}</div>
+        <div className="row">
+          <div className="col-md-8">{showData()}</div>
+          <div className="col-md-4">
+            <div className="card">
+              <div className="card-body">
+                {showUpdateForm ? (
+                  <UpdateExhibition
+                    userForm={updateFormData}
+                    loadDataFromBackend={fetchData}
+                    showForm={setShowUpdateForm}
+                  ></UpdateExhibition>
+                ) : (
+                  <h3 className="text-muted">Select User to Update</h3>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
